@@ -1,0 +1,14 @@
+.body {
+    padding: 0px;
+    margin: 0px;
+    background-image: url("../img/space1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+#h2 {
+    font-weight: bold;
+    font-size: 34px;
+}

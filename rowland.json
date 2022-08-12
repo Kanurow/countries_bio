@@ -1,0 +1,17 @@
+[
+    {
+        "userid": "001",
+        "first_name": "Rowland",
+        "last_name": "Kanu",
+        "email": "Kanurowland92@gmail.com",
+        "highest_edu": "B.Sc",
+        "discipline": "Economics",
+        "skills": ["HTML", "CSS","Javascript" , "Vanilla js", "jQuery", "Java", "Springboot"],
+        "interest": ["Football","Anime","Machine Learning"]
+    },
+    {
+        "userid": "002",
+        "first_name": "John",
+        "last_name": "Doe"
+    }
+]
