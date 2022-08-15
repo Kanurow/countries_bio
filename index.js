@@ -30,19 +30,6 @@ let json = document.getElementById("get-json").addEventListener('click', () => {
     })
 });
 
-// let api1 = document.getElementById("get-api").addEventListener('click', () => {
-//     fetch('https://countriesnow.space/api/v0.1/countries/states')
-//     .then((external_data) => external_data.json())
-//     .then((data) => {
-//         let output = '<h2>Countries Summary Data</h2>';
-//         data.forEach((country) => {
-//             console.log(country)
-//         })
-//         document.getElementById('output').innerHTML = output
-//     })
-// });
-
-
 
 
 let api2 = document.getElementById("get-api").addEventListener('click', () => {
@@ -50,66 +37,26 @@ let api2 = document.getElementById("get-api").addEventListener('click', () => {
     .then((response) => response.json())
     .then((file) => {
         let output = '<p>Countries Summary Data</p>';
-        //console.log(data)
-        console.log(file.data[0].name)
-        file = JSON.parse(JSON.stringify(file));
-
-
-/*        
-        console.log("File")
-        console.log(file)
-        console.log("file.data  --------")
-        console.log(file.data)
-        console.log("file.data['0']*******")
-        console.log(file.data[0])
-        console.log("file.data[0].states======")
-        console.log(file.data[0].states)
-        console.log("file.data[0]['states'][0]//////")
-        console.log(file.data[0]['states'][0])
-        console.log("file.data[0]['states'][0].name")
-        console.log(file.data[0]['states'][0].name)
-        console.log("file.data[0]['states'][0].state_code")
-        console.log(file.data[0]['states'][0].state_code)
-        console.log(file.data.length)
-
-*/      
-
 
         for (let i = 0; i < file.data.length; i++) {
-            output += `
-                <ul>
-                    <li>Country Name: ${file.data[i].name}</li>
-                    <li>Country ISO2: ${file.data[i].iso2}</li>
-                    <li>Country ISO3: ${file.data[i].iso3}</li>
-                    
+            for (let j = 0; j < file.data[i].states.length; j++) {
+                let stateName = JSON.stringify(file.data[i].states[j].name)
+                let stateCode = JSON.stringify(file.data[i].states[j].state_code)
 
+                output += `
+                <ul>
+                    <li>Country : ${file.data[i].name} </li>
+                    <li>ISO2 : ${file.data[i].iso2} </li>
+                    <li>ISO3 : ${file.data[i].iso3} </li>
+                    <li>State Name : ${stateName} </li>
+                    <li>State Code : ${stateCode} </li>
                 </ul>
-            `          
-        }
+            `
+            }   
+
+            }
+
+
         document.getElementById('output').innerHTML = output
     })
 });
-
-
-// document.getElementById("addData").addEventListener('submit', addText) 
-
-// function addText(e){
-//     e.preventDefault();
-
-//     let title = document.getElementById('title').value;
-//     let textBody = document.getElementById('textBody').value;
-
-//     fetch('rowland.txt', {
-//         method: "POST",
-//         headers: {
-//             'Accept': 'application/json, text/plain, */*',
-//             'Content-type': 'application/json'
-
-//         },
-//         body: JSON.stringify({
-//             title:title, body:textBody
-//         })
-//         .then((res) => res.json())
-//         .then((data) => console.log(data))
-//     })
-// }

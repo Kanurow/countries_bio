@@ -6,11 +6,7 @@
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
 }
-.output {
-    font-size: 5px;
-    line-height: 10px;
-    color: white;
-}
+
 li {
     list-style: none;
 }
