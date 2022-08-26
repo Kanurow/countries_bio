@@ -7,9 +7,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-li {
-    list-style: none;
+p {
+    font-size: 12px;
 }
+
 button {
     margin-bottom: 40px;
 }
@@ -24,71 +25,111 @@ button {
     font-weight: bold;
 }
 
-.pagination-header {
+.container {
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-#table-size {
-    width: 70px;
-    height: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    visibility: hidden;
 }
 
-#table-size option {
-    text-align: center;
+.card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+.card {
+    position: relative;
+    background: #fff;
+    max-width: 400px;
+    height: auto;
+    margin: 25px;
+    box-shadow: 0 5px 25px rgba(188, 218, 23, 0.87);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-table {
-    width: 100%;
-    margin-top: 25px;
-    background-color: white;
+.card-info {
+    position: relative;
+    color: #222;
+    padding: 10px 20px 20px;
+}
+.card-info h3{
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+#capstates {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+#liststates {
+    display: inline-block;
+}
+#country-name {
+    font-size: 24px;
+    display: block;
 }
 
-thead tr{
-    background-color: rgb(179, 162, 141);
+
+.card-info h3{
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
-td, th {
-    border: 1px solid rgb(179, 162, 141);
-    padding: 8px;
-    text-align: left;
+
+
+
+.card-info p{
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
-tbody tr:nth-child(even){
-    background-color: blanchedalmond;
+.state-list{
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 5px;
 }
-tbody tr:hover {
-    box-shadow: 0px 0px 5px 0px black;
-}
+
+
+
+
+
+
+
+
+
+
 
 .pagination-footer {
-    margin-top: 40px;
-    margin-bottom: 40px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: space-between;
-}
 
+}
 .pagination-buttons {
     display: inline-block;
 }
 
-.pagination-buttons a {
+
+
+.pagination-buttons a,
+.pagination-details {
     color: black;
+    font-weight: 700;
     border: 1px solid #ddd;
     padding: 8px 16px;
-    margin: 0px 5px;
+    margin: 0px 4px;
     text-decoration: none;
 }
 
-.pagination-buttons a.active {
-    background: linear-gradient(to bottom, white 0%, #dcdcdc 100%) ;
-    color: #333 !important;
-    border: 1px solid #979797;
-}
-
-.pagination-buttons a:hover {
-    color: #333 !important;
-    background: linear-gradient(to bottom, white 0%, rgb(87, 87, 87) 100%) ;
-
-}
-#table {
-    visibility: hidden;
+.pagination-buttons a:hover{
+    color: black;
+    background: #ccc;
+    border: 1px solid #816666;
 }

@@ -33,14 +33,14 @@ let json = document.getElementById("get-json").addEventListener('click', () => {
 
 
 let api2 = document.getElementById("get-api").addEventListener('click', () => {
-    let serialNo = 0
+
     fetch('https://countriesnow.space/api/v0.1/countries/states')
     .then((response) => response.json())
     .then((file) => {
-        // console.log(file)
+        console.log(file)
         let firstHundredCountries = file.data.slice(0,100)
         let page_number = 1;
-        let records_per_page = 5;
+        let records_per_page = 10;
         let total_pages = Math.ceil(firstHundredCountries.length / records_per_page)
         // console.log(firstHundredCountries.length)
         
@@ -49,7 +49,6 @@ let api2 = document.getElementById("get-api").addEventListener('click', () => {
             var button_text = '<a href="#" onClick="javascript:$.fn.prevPage();" >&laquo;</a>';
             var active = '';
             for (let i = 1; i <= total_pages; i++) {
-                
                 if (i == 1) {
                     active = ' active'
                 } else {
@@ -69,42 +68,30 @@ let api2 = document.getElementById("get-api").addEventListener('click', () => {
 
 
 
-        // display table rows from json data
+        // display dataset on card
         $.fn.displayTableData = function() {
             var start_index = (page_number - 1) * records_per_page;
-            let end_index = start_index + (records_per_page  - 1)
-            end_index = (end_index >= firstHundredCountries.length ) ? firstHundredCountries.length - 1 : end_index;
-            // $('#output').css('visibility', 'hidden');
-            $('#output').css('visibility', 'hidden');
-            $('#table').css('visibility', 'visible');
-            let serialNo = 0
+            let end_index = start_index + records_per_page;
+
             let innerHTML = '';
 
 
             for (let i = start_index; i < end_index ; i++) {
+                innerHTML += '<h3 id="country-name">'+ 'Country: ' + '<span >' + firstHundredCountries[i].name; + '</span>'+ '</h3>' +'br'
+                innerHTML += '<p id="capstates">' + 'States : ' + '</p>' //add class here and style it
                 for (let j = 0; j < firstHundredCountries[i].states.length; j++) {
-                    // let countryNum = 0
-                    let stateName = JSON.stringify(file.data[i].states[j].name)
-                    let stateCode = JSON.stringify(file.data[i].states[j].state_code)
-
-                    serialNo++
-              
-                    innerHTML = innerHTML +  '<tr>' +
-                        '<td>'+(serialNo)+'</td>'+
-                        '<td>'+file.data[i].name+'</td>'+
-                        '<td>'+file.data[i].iso2+'</td>'+
-                        '<td>'+file.data[i].iso3+'</td>'+
-                        '<td>'+stateName+'</td>'+
-                        '<td>'+stateCode+'</td>'+
-
-                    '</tr>';
+                    innerHTML += '<p id="liststates">' + '<span>' + (file).data[i].states[j].name + ', ' + '</span>'+ '</p>' 
                     
-                }   
+                } 
             }
-            // console.log("Num = "+serialNo)
-            $("table tbody tr").remove();
-            $("table tbody").append(innerHTML);
 
+
+            $('.container').css('visibility', 'visible')
+            $("#output").empty()
+            $(".card-info #try").remove();
+            
+            $(".card-info").empty()
+            $(".card-info").append(innerHTML);
 
 
             $(".page_index").removeClass('active')
@@ -113,20 +100,6 @@ let api2 = document.getElementById("get-api").addEventListener('click', () => {
              $(".pagination-details").text('Page '+(page_number))
            }
 
-
-
-
-        // $("#table-size").change(function() {
-        //     let tab_size = $(this).val();
-        //     records_per_page = parseInt(tab_size)
-        //     page_number = 1
-        //     total_pages = Math.ceil(serialNo / records_per_page)
-        //     console.log("changeTP :"+total_pages+ "Sn :"+serialNo+"Tabsize :"+tab_size)
-            
-
-        //     $.fn.DisplayPaginationButtons();
-        //     $.fn.displayTableData();
-        // })
 
 
         $.fn.changePageIndex = function(index) {
@@ -148,3 +121,4 @@ let api2 = document.getElementById("get-api").addEventListener('click', () => {
     } )
 
 })
+
